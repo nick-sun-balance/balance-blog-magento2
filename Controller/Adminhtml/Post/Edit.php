@@ -12,6 +12,10 @@ namespace Balance\Blog\Controller\Adminhtml\Post;
 
 use Magento\Backend\App\Action;
 
+/**
+ * Class Edit
+ * @package Balance\Blog\Controller\Adminhtml\Post
+ */
 class Edit extends \Magento\Backend\App\Action
 {
     /**
