@@ -43,9 +43,8 @@
         <apply executable="php" checkreturn="1">
             <arg value="-l" />
 
-            <fileset dir="${project.basedir}/src/app/code/local">
-                <include name="Balance/**/*.php" />
-                <include name="Starbuys/**/*.php" />
+            <fileset dir="${project.basedir}">
+                <include name="**/*.php" />
             </fileset>
 
         </apply>
@@ -55,8 +54,7 @@
         <exec executable="phploc" logoutput="true">
             <arg value="--log-csv" />
             <arg value="${project.basedir}/build/logs/phploc.csv" />
-            <arg path="${project.basedir}/src/app/code/local/Balance" />
-            <arg path="${project.basedir}/src/app/code/local/Starbuys" />
+            <arg path="${project.basedir}" />
         </exec>
     </target>
 
@@ -65,14 +63,13 @@
             <arg value="--jdepend-xml=${project.basedir}/build/logs/jdepend.xml" />
             <arg value="--jdepend-chart=${project.basedir}/build/pdepend/dependencies.svg" />
             <arg value="--overview-pyramid=${project.basedir}/build/pdepend/overview-pyramid.svg" />
-            <arg path="${project.basedir}/src/app/code/local/Balance,${project.basedir}/src/app/code/local/Starbuys" />
         </exec>
     </target>
 
     <target name="phpmd"
             description="Perform project mess detection using PHPMD and print human readable output. Intended for usage on the command line before committing.">
         <exec executable="phpmd" logoutput="true">
-            <arg path="${project.basedir}/src/app/code/local/Balance,${project.basedir}/src/app/code/local/Starbuys" />
+            <arg path="${project.basedir}" />
             <arg value="text" />
             <arg value="${project.basedir}/../../rulesets/phpmd.xml" />
         </exec>
@@ -80,7 +77,7 @@
 
     <target name="phpmd-ci" description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
         <exec executable="phpmd" logoutput="true">
-            <arg path="${project.basedir}/src/app/code/local/Balance,${project.basedir}/src/app/code/local/Starbuys" />
+            <arg path="${project.basedir}" />
             <arg value="xml" />
             <arg value="${project.basedir}/../../rulesets/phpmd.xml" />
             <arg value="--reportfile" />
@@ -92,8 +89,7 @@
             description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
         <exec executable="phpcs" logoutput="true">
             <arg value="--standard=PSR2MagentoParanoid" />
-            <arg path="${project.basedir}/src/app/code/local/Balance" />
-            <arg path="${project.basedir}/src/app/code/local/Starbuys" />
+            <arg path="${project.basedir}" />
         </exec>
     </target>
 
@@ -102,8 +98,7 @@
             <arg value="--report=checkstyle" />
             <arg value="--report-file=${project.basedir}/build/logs/checkstyle.xml" />
             <arg value="--standard=PSR2MagentoParanoid" />
-            <arg path="${project.basedir}/src/app/code/local/Balance" />
-            <arg path="${project.basedir}/src/app/code/local/Starbuys" />
+            <arg path="${project.basedir}" />
         </exec>
     </target>
 
@@ -111,8 +106,7 @@
         <exec executable="phpcpd" logoutput="true">
             <arg value="--log-pmd" />
             <arg value="${project.basedir}/build/logs/pmd-cpd.xml" />
-            <arg path="${project.basedir}/src/app/code/local/Balance" />
-            <arg path="${project.basedir}/src/app/code/local/Starbuys" />
+            <arg path="${project.basedir}" />
         </exec>
     </target>
 
