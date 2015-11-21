@@ -20,7 +20,7 @@ class AbstractMassStatus extends \Magento\Backend\App\Action
     /**
      * Field id
      */
-    const ID_FIELD = 'entity_id';
+    const ID_FIELD = 'post_id';
 
     /**
      * Redirect url

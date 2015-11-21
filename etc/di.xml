@@ -1,33 +1,33 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Balance\Blog\Api\Data\PostInterface" type="Balance\Blog\Model\Post"/>
-    <virtualType name="Balance\Blog\Model\ResourceModel\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
-        <arguments>
-            <argument name="mainTable" xsi:type="string">balance_blog_post</argument>
-            <argument name="resourceModel" xsi:type="string">Balance\Blog\Model\ResourceModel\Post</argument>
-        </arguments>
-    </virtualType>
+                 xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<preference for="Balance\Blog\Api\Data\PostInterface" type="Balance\Blog\Model\Post"/>
+<virtualType name="Balance\Blog\Model\ResourceModel\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <arguments>
+        <argument name="mainTable" xsi:type="string">balance_blog_post</argument>
+        <argument name="resourceModel" xsi:type="string">Balance\Blog\Model\ResourceModel\Post</argument>
+    </arguments>
+</virtualType>
 
-    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
-        <arguments>
-            <argument name="collections" xsi:type="array">
-                <item name="blog_post_listing_data_source" xsi:type="string">Balance\Blog\Model\ResourceModel\Post\Grid\Collection</item>
-            </argument>
-        </arguments>
-    </type>
-    <virtualType name="PostGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
-        <arguments>
-            <argument name="collection" xsi:type="object" shared="false">Balance\Blog\Model\ResourceModel\Post\Collection</argument>
-            <argument name="filterPool" xsi:type="object" shared="false">BlogGirdFilterPool</argument>
-        </arguments>
-    </virtualType>
-    <virtualType name="BlogGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
-        <arguments>
-            <argument name="appliers" xsi:type="array">
-                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
-                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
-            </argument>
-        </arguments>
-    </virtualType>
+<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <arguments>
+        <argument name="collections" xsi:type="array">
+            <item name="blog_post_listing_data_source" xsi:type="string">Balance\Blog\Model\ResourceModel\Post\Grid\Collection</item>
+        </argument>
+    </arguments>
+</type>
+<virtualType name="PostGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+    <arguments>
+        <argument name="collection" xsi:type="object" shared="false">Balance\Blog\Model\ResourceModel\Post\Collection</argument>
+        <argument name="filterPool" xsi:type="object" shared="false">BlogGirdFilterPool</argument>
+    </arguments>
+</virtualType>
+<virtualType name="BlogGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+    <arguments>
+        <argument name="appliers" xsi:type="array">
+            <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+            <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+        </argument>
+    </arguments>
+</virtualType>
 </config>

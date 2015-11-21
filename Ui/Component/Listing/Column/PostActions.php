@@ -53,13 +53,13 @@ class PostActions extends Column
      * Prepare Data Source
      *
      * @param array $dataSource
-     * @return void
+     * @return array
      */
     public function prepareDataSource(array $dataSource)
     {
         if (isset($dataSource['data']['items'])) {
+            $name = $this->getData('name');
             foreach ($dataSource['data']['items'] as & $item) {
-                $name = $this->getData('name');
                 if (isset($item['post_id'])) {
                     $item[$name]['edit'] = [
                         'href' => $this->urlBuilder->getUrl($this->editUrl, ['post_id' => $item['post_id']]),
@@ -70,7 +70,7 @@ class PostActions extends Column
                         'label' => __('Delete'),
                         'confirm' => [
                             'title' => __('Delete "${ $.$data.title }"'),
-                            'message' => __('Are you sure you wan\'t to delete a "${ $.$data.title }" record?')
+                            'message' => __('Are you sure you want to delete a "${ $.$data.title }" record?')
                         ]
                     ];
                 }
