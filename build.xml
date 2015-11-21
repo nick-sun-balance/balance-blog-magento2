@@ -61,6 +61,7 @@
             <arg value="--jdepend-xml=${project.basedir}/build/logs/jdepend.xml" />
             <arg value="--jdepend-chart=${project.basedir}/build/pdepend/dependencies.svg" />
             <arg value="--overview-pyramid=${project.basedir}/build/pdepend/overview-pyramid.svg" />
+            <arg value="${project.basedir}" />
         </exec>
     </target>
 
