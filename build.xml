@@ -42,11 +42,9 @@
     <target name="lint" description="Perform syntax check of sourcecode files">
         <apply executable="php" checkreturn="1">
             <arg value="-l" />
-
             <fileset dir="${project.basedir}">
-                <include name="**/*.php" />
+                <include name="./**/*.php" />
             </fileset>
-
         </apply>
     </target>
 
