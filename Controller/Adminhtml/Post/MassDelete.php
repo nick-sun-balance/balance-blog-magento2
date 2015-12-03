@@ -8,7 +8,8 @@
  */
 
 namespace Balance\Blog\Controller\Adminhtml\Post;
-
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class MassDelete extends \Magento\Backend\App\Action
 {
@@ -42,6 +43,10 @@ class MassDelete extends \Magento\Backend\App\Action
         $selected = $this->getRequest()->getParam('selected');
         $excluded = $this->getRequest()->getParam('excluded');
 
+        if (!is_array($excluded)) {
+            $excluded = array($excluded);
+        }
+
         try {
             if (isset($excluded)) {
                 if (!empty($excluded)) {
@@ -60,7 +65,7 @@ class MassDelete extends \Magento\Backend\App\Action
 
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        return $resultRedirect->setPath(static::REDIRECT_URL);
+        return $resultRedirect->setPath('*/*/');
     }
 
     /**
