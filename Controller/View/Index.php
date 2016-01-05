@@ -35,14 +35,25 @@ class Index extends Action
      */
     public function execute()
     {
-        $post_id = $this->getRequest()->getParam('post_id', $this->getRequest()->getParam('id', false));
+        $postId = $this->getRequest()->getParam('post_id', $this->getRequest()->getParam('id', false));
         /** @var \Balance\Blog\Helper\Post $post_helper */
-        $post_helper = $this->_objectManager->get('Balance\Blog\Helper\Post');
-        $result_page = $post_helper->prepareResultPost($this, $post_id);
-        if (!$result_page) {
+        $postHelper = $this->_objectManager->get('Balance\Blog\Helper\Post');
+        $resultPage = $postHelper->prepareResultPost($this, $postId);
+        if (!$resultPage) {
             $resultForward = $this->resultForwardFactory->create();
             return $resultForward->forward('noroute');
         }
-        return $result_page;
+        $model = $this->_objectManager->create('Balance\Blog\Model\Post');
+        if (!$model->load($postId)) {
+            return false;
+        }
+
+        $parameters = [
+            'post' => $model
+        ];
+        $this->_eventManager->dispatch('blog_view_index', $parameters);
+
+
+        return $resultPage;
     }
 }

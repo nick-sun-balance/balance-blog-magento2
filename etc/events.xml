@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="blog_view_index">
+        <observer name="register_blog_view_index" instance="Balance\Blog\Observer\BlogViewObserver" />
+    </event>
+</config>

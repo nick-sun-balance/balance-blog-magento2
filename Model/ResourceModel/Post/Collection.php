@@ -11,6 +11,7 @@ namespace Balance\Blog\Model\ResourceModel\Post;
 
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+// for EAV, extends \Magento\Eav\Model\Entity\Collection\AbstractCollection
 {
     protected $_idFieldName = 'post_id';
 

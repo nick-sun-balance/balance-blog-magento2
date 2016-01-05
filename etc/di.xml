@@ -30,4 +30,12 @@
         </argument>
     </arguments>
 </virtualType>
+
+<type name="Magento\Framework\Console\CommandList">
+    <arguments>
+        <argument name="commands" xsi:type="array">
+            <item name="helloWorldCommand" xsi:type="object">Balance\Blog\Console\Command\HelloWorldCommand</item>
+        </argument>
+    </arguments>
+</type>
 </config>

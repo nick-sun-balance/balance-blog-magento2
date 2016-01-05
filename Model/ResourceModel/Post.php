@@ -14,6 +14,7 @@ namespace Balance\Blog\Model\ResourceModel;
  */
 
 class Post extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+// for EAV, extends \Magento\Eav\Model\Entity\AbstractEntity
 {
     protected $_eventPrefix = 'blog_post_resource';
     protected $_eventObject = 'resource';
