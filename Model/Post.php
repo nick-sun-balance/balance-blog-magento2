@@ -246,10 +246,4 @@ class Post extends \Magento\Framework\Model\AbstractModel implements PostInterfa
     {
         return $this->setData(self::IS_ACTIVE, $is_active);
     }
-
-    public function getList()
-    {
-        return;
-    }
-
 }

@@ -9,10 +9,13 @@ namespace Balance\Blog\Api;
 interface PostRepositoryInterface
 {
     /**
-     * @param $postId
+     * @param int $postId
      *
      * @return \Balance\Blog\Api\Data\PostInterface
+     * @throws \Magento\Framework\Exception\NoSuchEntityException If post with the specified ID does not exist.
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
+
     public function getById($postId);
 
     /**
@@ -31,9 +34,12 @@ interface PostRepositoryInterface
 
 
     /**
-     * @param $postId
+     * @param int $postId
      *
-     * @return bool
+     * @return bool true on success
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
+
     public function deleteById($postId);
 }
